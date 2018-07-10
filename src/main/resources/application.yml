@@ -1,0 +1,43 @@
+
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/emp?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+  thymeleaf:
+    cache: false # Enable template caching.
+    encoding: Shift_JIS # Template files encoding.
+    mode: HTML5 # Template mode to be applied to templates. See also StandardTemplateModeHandlers.
+    prefix: classpath:/templates/views/ # Prefix that gets prepended to view names when building a URL.
+    suffix: .html # Suffix that gets appended to view names when building a URL.
+    servlet.content-type: text/html # Content-Type value written to HTTP responses.
+  mail:
+    default-encoding: Shift_JIS
+#    host: smtp.mail.yahoo.co.jp
+    port: 587
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp
+    username: rxjh2012@yahoo.co.jp
+    password:
+
+openurl: true
+loginurl: http://localhost:8080/
+googleexcute: C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.emp.fs.entity

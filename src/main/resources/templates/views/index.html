@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="Shift_JIS">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>INDEX | 社員情報処理システム</title>
+    <link th:href="@{/css/bootstrap.css}" type="text/css" rel="stylesheet" charset="Shift_JIS">
+    <script th:src="@{/js/jquery.min.js}" type="text/javascript" charset="Shift_JIS"></script>
+    <script th:src="@{/js/bootstrap.js}" type="text/javascript" charset="Shift_JIS"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">社員情報処理システム</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h3>こんにちは！事務センターへ~~~ようこそ！~~~</h3>
+        <p>このサイトは、社員情報転換システムと呼ばれています。
+        <p>
+        <p><a role="button" class="btn btn-primary" th:href="@{/csv}">すぐ体験</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        本文はこちらです。
+    </div>
+    <hr>
+    <footer>
+        <p>&copy; 2018 羽石株式会社　開発者：ＴＳＫ</p>
+    </footer>
+</div> <!-- /container -->
+</body>
+</html>
