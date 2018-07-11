@@ -16,23 +16,14 @@ spring:
     suffix: .html # Suffix that gets appended to view names when building a URL.
     servlet.content-type: text/html # Content-Type value written to HTTP responses.
   mail:
+    host: smtp.mail.yahoo.co.jp
     default-encoding: Shift_JIS
-#    host: smtp.mail.yahoo.co.jp
     port: 587
-    test-connection: true
-    properties:
-      mail:
-        smtp:
-          connectiontimeout: 5000
-          timeout: 3000
-          writetimeout: 5000
-          auth: true
-          starttls:
-            enable: true
-            required: true
-    protocol: smtp
     username: rxjh2012@yahoo.co.jp
     password:
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+
 
 openurl: true
 loginurl: http://localhost:8080/

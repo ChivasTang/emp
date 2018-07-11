@@ -7,13 +7,13 @@ import com.emp.fs.util.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,9 +64,10 @@ public class CSVController {
         return "csv";
     }
 
-    @PostMapping("/mail")
+
     @ResponseBody
-    public String mail(Model model) throws MailException {
+    @PostMapping("/mail")
+    public Model mail(Model model) throws MailException {
         String[] fileNames = {POSITION_OUT, DEPARTMENT_OUT, EMPLOYEE_OUT};
         String zipPwd = RandomStringUtils.getPassword();
         model.addAttribute("zipPwd", "解凍用パスワードは：" + zipPwd);
@@ -82,16 +83,15 @@ public class CSVController {
                 helper.setSubject("社員情報処理結果の通知");
                 helper.setText("ZIPファイルの解凍用パスワードは、<---" + zipPwd + "--->", true);
 
-                FileSystemResource fileSystemResource = new FileSystemResource(new File(ZIP_PREFIX + ZIP_NAME + ZIP_SUFFIX));
-                helper.addAttachment(ZIP_NAME, fileSystemResource);
+                FileSystemResource file = new FileSystemResource(new File(ZIP_PREFIX + ZIP_NAME + ZIP_SUFFIX));
+                helper.addAttachment("EmployeeInfoConverted.zip", file);
                 mailSender.send(message);
                 model.addAttribute("msg", "送信を行いました。メールボクスをチェックしてください。");
             } catch (MessagingException e) {
-                e.printStackTrace();
                 logger.error(e.getMessage());
             }
         }
         model.addAttribute("employeeList", employeeList);
-        return "mail";
+        return model;
     }
 }
